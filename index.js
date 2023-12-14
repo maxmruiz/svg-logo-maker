@@ -6,13 +6,16 @@ const createSVG = require('./lib/svgCreator');
 
 // Defining the color validation process that will be used in the prompt
 const colorValidate = (value) => {
-    const hexColorRange = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
+    const hexColorRegex = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
+    const colorNameRegex = /^[a-zA-Z]+$/;
 
-    if (value === '' || hexColorRange.test(value) || typeof value === 'string') {
-        return true;
+    if (hexColorRegex.test(value) || colorNameRegex.test(value)) {
+        return true; // Valid if it matches hex code pattern or is a color name
+    } else {
+        return 'Please enter a valid color name or hexadecimal code.';
     }
-    return 'Please enter a valid color name or hexadecimal.';
-}
+};
+
 
 // User input prompts
 const userInput = [
@@ -51,11 +54,10 @@ const userInput = [
 // Creating SVG file per answers and shapes created.
 inquirer.prompt(userInput).then(answers => {
     const svgContent = createSVG(answers);
-
-    fs.writeFile('logo.svg', svgContent, err => {
+    fs.writeFile('logo.svg', svgContent, (err) => {
         if (err) {
-            console.error('Error creating your SVG file', err);
-        } else  {
+            console.error('Error creating your SVG file:', err);
+        } else {
             console.log('Generated logo.svg');
         }
     });
