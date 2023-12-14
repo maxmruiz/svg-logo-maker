@@ -47,7 +47,7 @@ node index.js
 
 ## Tests
 
-To run the tests, you will need to install the dependencies as needed, make a test file ending in *test.js*, and run the following code in the project terminal:
+To run the tests, you will need to install the dependencies as needed, make a test file ending in `.test.js`, and run the following code in the project terminal:
 
 ```bash
 npm test
