@@ -25,6 +25,7 @@ const userInput = [
             if (value.length > 3) {
                 return 'Please enter a word no more than 3 characters.';
             }
+            return true;
         }
     },
     {
