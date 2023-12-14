@@ -55,4 +55,4 @@ npm test
 
 ## Walkthrough
 
-Here is a walkthrough video on how this project works: [YouTube]().
+Here is a walkthrough video on how this project works: [YouTube](https://youtu.be/EiIfJjf_zb8).
