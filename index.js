@@ -28,7 +28,7 @@ const userInput = [
     },
     {
         type: 'input',
-        name: 'color',
+        name: 'textColor',
         message: 'Enter a color (name or hexadecimal) for your text:',
         validate: colorValidate // Color validation function defined previously
     },
