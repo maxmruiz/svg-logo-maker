@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const jest = require('jest');
 const fs = require('fs');
+const createSVG = require('./lib/svgCreator');
 
 // Defining the color validation process that will be used in the prompt
 const colorValidate = (value) => {
@@ -45,3 +46,16 @@ const userInput = [
         validate: colorValidate
     }
 ];
+
+// Creating SVG file per answers and shapes created.
+inquirer.createPromptModule(questions).then(answers => {
+    const svgContent = createSVG(answers);
+
+    fs.writeFile('logo.svg', svgContent, err => {
+        if (err) {
+            console.error('Error creating your SVG file', err);
+        } else  {
+            console.log('Generated logo.svg');
+        }
+    });
+});
