@@ -48,7 +48,7 @@ const userInput = [
 ];
 
 // Creating SVG file per answers and shapes created.
-inquirer.createPromptModule(questions).then(answers => {
+inquirer.createPromptModule(userInput).then(answers => {
     const svgContent = createSVG(answers);
 
     fs.writeFile('logo.svg', svgContent, err => {
